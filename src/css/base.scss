@@ -4,6 +4,48 @@ $primary-background: pink;
 body {
   margin: 0;
   background-color: $primary-background;
+  // font-family: 'PT Sans Narrow', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.splash-page {
+  background-image: linear-gradient( rgba(0,0,0,0.3), rgba(0, 0, 0, 0.3) ), url("../images/splash-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  // opacity: 0.5;
+}
+
+.splash-box {
+  border-radius: 8px;
+  background-color: white;
+  border: 2px solid white;
+  height: 400px;
+  margin-top: 20%;
+  text-align: center;
+  width: 700px;
+  opacity: .8;
+}
+
+.splash-page-h1 {
+  font-size: 70px;
+  margin-top: 15%;
+}
+
+.h1-span {
+  font-style: italic;
+}
+
+.splash-page-h2 {
+  font-size: 30px;
+}
+
+.splash-page-enter-button {
+  height: 50px;
+  width: 600px;
+  font-size: 22px;
 }
 
 ul.tabs{
