@@ -11,3 +11,14 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+
+$(document).ready(function() {
+  $('.main-site').hide();
+
+  $('.splash-page-enter-button').on('click', () => {
+    $('.splash-page').hide();
+    $('.main-site').show();
+  });
+})
+
