@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <title>Webpack Starter Kit</title>
-  </head>
-  <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  </body>
+<head>
+  <title>Welcome to Overlook</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" src="css/normalize.css">
+  <link rel="stylesheet" type="text/css" src="css/base.scss">
+  <!-- <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed:200&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section class="splash-page">
+    <div class="splash-box">
+    <h1 class="splash-page-h1">Welcome to <span class="h1-span">Overlook</span></h1>
+    <h2 class="splash-page-h2">Voted Best Hotel Management Application of 2019</h2>
+    <button type="submit" class="splash-page-enter-button">Enter Site</button>
+  </div>
+  </section>
+  <section class="main-site">
+  <section class="tabs-bar">
+      <ul class="tabs">
+        <li class="tab-link current" data-tab="main-tab">Main</li>
+        <li class="tab-link" data-tab="customer-tab">Customer</li>
+        <li class="tab-link" data-tab="rooms-tab">Rooms</li>
+        <li class="tab-link" data-tab="orders-tab">Orders</li>
+        <li class="main-page-header">Overlook</li>
+      </ul>
+      <section class="tab-content current" id="main-tab">
+        blah blah blah 111
+      </section>
+      <footer>
+          <img src= "../images/twitter.svg" alt= "twitter logo" class= "footer-logos" id= "twitter-logo">
+          <img src= "../images/instagram.svg" alt= "instagram logo" class= "footer-logos" id= "instagram-logo">
+          <img src= "../images/facebook.svg" alt= "facebook logo" class= "footer-logos" id= "facebook-logo">
+          <img src= "../images/linkedin.svg" alt= "linkedin logo" class= "footer-logos" id= "linkedin-logo">
+      </footer>
+      <section class="tab-content" id="customer-tab">
+         blah blah blah 222
+      </section>
+      <section class="tab-content" id="rooms-tab">
+        blah blah blah 333
+      </section>
+      <section class="tab-content" id="orders-tab">
+        blah blah blah 444
+      </section>
+    </section>
+</section>
+</body>
 </html>
+
+<!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->

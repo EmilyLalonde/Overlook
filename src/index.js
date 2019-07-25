@@ -8,6 +8,25 @@ import $ from 'jquery';
 import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+
+$(document).ready(function() {
+  $('.main-site').hide();
+
+  $('.splash-page-enter-button').on('click', () => {
+    $('.splash-page').hide();
+    $('.main-site').show();
+  });
+
+  $('ul.tabs li').click(function() {
+    var tab_id = $(this).attr('data-tab');
+
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+
+    $(this).addClass('current');
+    $("#" + tab_id).addClass('current');
+  })
+  
+});
