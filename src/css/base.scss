@@ -3,11 +3,7 @@
 
 body {
   margin: 0;
-<<<<<<< HEAD
   background-color: white;
-=======
-  background-color: $primary-background;
->>>>>>> 36bd602cbf01a3d2b1bf3109b311b29c8da8e8d7
   // font-family: 'PT Sans Narrow', sans-serif;
   font-family: 'Barlow Condensed', sans-serif;
 }
@@ -82,13 +78,13 @@ ul.tabs li.current{
 
 .tab-content.current{
   display: inherit;
-  margin-top: 40px;
-  height: 73vh;
+  margin-top: 30px;
+  height: 70vh;
 }
 
 footer {
   background-color: darkgray;
-  height: 12vh;
+  height: 15vh;
 }
 
 img {
@@ -110,13 +106,64 @@ img {
   background-position: right;
 }
 
+label {
+  display: block;
+}
+
+#customer-tab {
+  background-image: url("../images/customer-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 58% 100%;
+  background-position: right;
+}
+
+.customer-input {
+  height: 55px;
+  width: 500px;
+}
+
+#rooms-tab {
+  background-image: url("../images/rooms-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 58% 100%;
+  background-position: right;
+}
+
+#orders-tab {
+  background-image: url("../images/orders-background.jpg");
+  background-repeat: no-repeat;
+  background-size: 58% 100%;
+  background-position: right;
+}
+
 #twitter-logo {
   margin-left: 38%;
 }
 
 .footer-logos {
-  height: 40px;
-  margin-top: 20px;
-  width: 60px;
+  height: 50px;
+  margin-top: 40px;
+  width: 70px;
   margin-right: 30px;
+}
+
+.rooms-footer {
+  height: 100px;
+  margin-top: 8px;
+  margin-left: 25px;
+  width: 150px;
+}
+
+.orders-footer {
+  height: 100px;
+  margin-top: 8px;
+  margin-left: 25px;
+  width: 150px;
+}
+
+.customers-footer {
+  height: 100px;
+  margin-top: 8px;
+  margin-left: 25px;
+  width: 150px;
 }
