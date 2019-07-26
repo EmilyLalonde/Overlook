@@ -1,12 +1,6 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
+import Main from '../src/Main.js'
 import './css/base.scss';
-
 import './images/twitter.svg'
 import './images/instagram.svg'
 import './images/facebook.svg'
@@ -36,7 +30,7 @@ import './images/customers-6.jpg'
 import './images/customers-7.jpg'
 import './images/customers-8.jpg'
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
+let main = new Main;
 
 
 $(document).ready(function() {
@@ -60,6 +54,8 @@ $(document).ready(function() {
     $(this).addClass('current');
     $("#" + tab_id).addClass('current');
   })
+
+  $('.todays-date').text(main.returnDateToday());
 });
 
 $('#main').on('click', function() {
