@@ -18,4 +18,27 @@ describe('Main', function() {
   it('should be an instance of Main', () => {
     expect(main).to.be.an.instanceof(Main);
   });
+
+  it('should store todays date', () => {
+    expect(main.date).to.equal('2019/07/27');
+    expect(main.returnDateToday()).to.equal('2019/07/27');
+  });
+
+  it('should store room, room service, and booking information', () => {
+    expect(main.roomData).to.be.a('array');
+    expect(main.roomServiceData).to.be.a('array');
+    expect(main.bookingData).to.be.a('array');
+  });
+
+  it('should find the bookings for todays date', () => {
+    expect(main.findBookingDatesForToday()).to.deep.eql([{
+      userID: 99,
+      date: "2019/07/27",
+      roomNumber: 21
+    }]);
+  });
+
+  it('should find the percentage of rooms booked for the day', () => {
+    expect(main.percentageOfRoomsBookedToday()).to.equal(9);
+  });
 });

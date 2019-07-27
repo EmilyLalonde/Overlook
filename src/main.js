@@ -4,23 +4,31 @@ class Main {
     this.roomData = roomData;
     this.roomServiceData = roomServiceData;
     this.bookingData = bookingData;
-    // console.log(this.roomData)
-    // console.log(this.roomServiceData)
-    // console.log(this.bookingData)
   }
   returnDateToday() {
-    var d = new Date();
-    var month = d.getMonth() + 1;
-    var day = d.getDate();
-    var output = d.getFullYear() + '/' + month + '/' + day;
-    return output
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = String(today.getMonth() + 1).padStart(2, '0');
+    let day = String(today.getDate())
+    return `${year}/${month}/${day}`
   }
-  findRoomsAvailable() {
-    console.log(this.bookingData.bookings)
-    let findBookingDates = this.bookingData.bookings.filter(function(booking) {
-      return booking.date === this.date
+
+  // findBookingDatesForToday(date = this.date) {
+  //   let findBookingDates = this.bookingData.filter(function(booking) {
+  //     return booking.date === date;
+  //   })
+  //   console.log(findBookingDates)
+  //   let findRooms = this.roomData.filter(function(room) {
+  //     return room === findBookingDates.roomNumber
+  //   })
+  //   return findRooms
+  // }
+
+  percentageOfRoomsBookedToday(date = this.date) {
+    let bookingsToday = this.bookingData.bookings.filter(function(booking) {
+      return booking.date === date;
     })
-    return findBookingDates
+    return (bookingsToday.length / this.roomData.rooms.length).toFixed(2) * 100;
   }
 }
 export default Main
