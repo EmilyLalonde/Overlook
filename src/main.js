@@ -1,8 +1,8 @@
 class Main {
-  constructor(allData) {
+  constructor(userData) {
     this.date = this.returnDateToday();
-    this.allData = allData;
-    console.log(this.allData)
+    this.userData = userData;
+    console.log(this.userData)
   }
   returnDateToday() {
     var d = new Date();
