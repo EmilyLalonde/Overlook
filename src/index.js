@@ -1,6 +1,6 @@
 //image and file imports
 import $ from 'jquery';
-import Main from '../src/Main.js'
+import Main from './main.js'
 import './css/base.scss';
 import './images/twitter.svg'
 import './images/instagram.svg'
@@ -71,8 +71,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServ
 
 $(document).ready(function() {
   setTimeout(function () {
-    let main = new Main(userData);
-    console.log(userData)
+    let main = new Main(roomData, roomServiceData);
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
