@@ -60,3 +60,5 @@ const roomServices = [
     totalCost: 12.32
   }
 ]
+
+export default roomServices;

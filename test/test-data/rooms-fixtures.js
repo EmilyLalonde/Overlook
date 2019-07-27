@@ -80,3 +80,5 @@ const rooms = [
     costPerNight: 296.48
   }
 ]
+
+export default rooms;

@@ -4,9 +4,9 @@ class Main {
     this.roomData = roomData;
     this.roomServiceData = roomServiceData;
     this.bookingData = bookingData;
-    console.log(this.roomData)
-    console.log(this.roomServiceData)
-    console.log(this.bookingData)
+    // console.log(this.roomData)
+    // console.log(this.roomServiceData)
+    // console.log(this.bookingData)
   }
   returnDateToday() {
     var d = new Date();
