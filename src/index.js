@@ -72,6 +72,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServ
 $(document).ready(function() {
   setTimeout(function () {
     let main = new Main(roomData, roomServiceData, bookingData);
+    // console.log(bookingData.bookings)
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
@@ -94,6 +95,8 @@ $(document).ready(function() {
     })
 
     $('.todays-date').text(main.returnDateToday());
+    $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
+
   }, 500);
 });
 
