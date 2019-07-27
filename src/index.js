@@ -1,3 +1,4 @@
+//image and file imports
 import $ from 'jquery';
 import Main from '../src/Main.js'
 import './css/base.scss';
@@ -30,6 +31,41 @@ import './images/customers-6.jpg'
 import './images/customers-7.jpg'
 import './images/customers-8.jpg'
 
+//fetch calls
+
+let userData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
+  .then(function(response) {
+    return response.json()
+  });
+
+let roomsData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
+  .then(function(response) {
+    return response.json()
+  });
+
+let bookingData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
+  .then(function(response) {
+    return response.json()
+  });
+
+let roomServieData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices')
+  .then(function(response) {
+    return response.json()
+  });
+
+let allData = {'userData': {}, 'roomsData': {}, 'bookingData': {}, 'roomServieData': {}}
+
+Promise.all([userData, roomsData, bookingData, roomServieData])
+  .then(function(values) {
+    allData['userData'] = values[0];
+    allData['roomsData'] = values[1];
+    allData['bookingData'] = values[2];
+    allData['roomServieData'] = values[3];
+    return allData;
+  })
+  .catch(error => console.log(`${error}`));
+
+//new instantiations of classes
 let main = new Main;
 
 
