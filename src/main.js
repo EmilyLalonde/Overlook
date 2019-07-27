@@ -1,6 +1,8 @@
 class Main {
-  constructor(date) {
-    this.date = date;
+  constructor(allData) {
+    this.date = this.returnDateToday();
+    this.allData = allData;
+    console.log(this.allData)
   }
   returnDateToday() {
     var d = new Date();
@@ -11,4 +13,4 @@ class Main {
   }
 }
 
-module.exports = Main
+export default Main
