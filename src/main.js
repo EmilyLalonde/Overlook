@@ -1,8 +1,10 @@
 class Main {
-  constructor(userData) {
+  constructor(roomData, roomServiceData) {
     this.date = this.returnDateToday();
-    this.userData = userData;
-    console.log(this.userData)
+    this.roomData = roomData;
+    this.roomServiceData = roomServiceData;
+    console.log(this.roomData)
+    console.log(this.roomServiceData)
   }
   returnDateToday() {
     var d = new Date();
