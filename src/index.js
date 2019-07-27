@@ -71,7 +71,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServ
 
 $(document).ready(function() {
   setTimeout(function () {
-    let main = new Main(roomData, roomServiceData);
+    let main = new Main(roomData, roomServiceData, bookingData);
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
