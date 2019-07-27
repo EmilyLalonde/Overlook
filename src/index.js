@@ -31,67 +31,71 @@ import './images/customers-6.jpg'
 import './images/customers-7.jpg'
 import './images/customers-8.jpg'
 
-//fetch calls
+//trying to make fetch happen
 
-let userData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
-  .then(function(response) {
-    return response.json()
-  });
-
-let roomsData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
-  .then(function(response) {
-    return response.json()
-  });
-
-let bookingData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
-  .then(function(response) {
-    return response.json()
-  });
-
-let roomServieData = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices')
-  .then(function(response) {
-    return response.json()
-  });
-
-let allData = {'userData': {}, 'roomsData': {}, 'bookingData': {}, 'roomServieData': {}}
-
-Promise.all([userData, roomsData, bookingData, roomServieData])
-  .then(function(values) {
-    allData['userData'] = values[0];
-    allData['roomsData'] = values[1];
-    allData['bookingData'] = values[2];
-    allData['roomServieData'] = values[3];
-    return allData;
+let userData;
+fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
+  .then(function (response) {
+    return response.json();
   })
-  .catch(error => console.log(`${error}`));
+  .then(function (dataset) {
+    userData = dataset;
+  });
 
-//new instantiations of classes
-let main = new Main;
+let roomData;
+fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (dataset) {
+    roomData = dataset;
+  });
 
+let bookingData;
+fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (dataset) {
+    bookingData = dataset;
+  });
+
+let roomServiceData;
+fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (dataset) {
+    roomServiceData = dataset;
+  });
 
 $(document).ready(function() {
-  $('.main-site').hide();
-  $('.rooms-tab-footer').hide();
-  $('.orders-tab-footer').hide();
-  $('.customers-tab-footer').hide();
+  setTimeout(function () {
+    let main = new Main(userData);
+    console.log(userData)
+    $('.main-site').hide();
+    $('.rooms-tab-footer').hide();
+    $('.orders-tab-footer').hide();
+    $('.customers-tab-footer').hide();
 
 
-  $('.splash-page-enter-button').on('click', () => {
-    $('.splash-page').hide();
-    $('.main-site').show();
-  });
+    $('.splash-page-enter-button').on('click', () => {
+      $('.splash-page').hide();
+      $('.main-site').show();
+    });
 
-  $('ul.tabs li').click(function() {
-    var tab_id = $(this).attr('data-tab');
+    $('ul.tabs li').click(function() {
+      var tab_id = $(this).attr('data-tab');
 
-    $('ul.tabs li').removeClass('current');
-    $('.tab-content').removeClass('current');
+      $('ul.tabs li').removeClass('current');
+      $('.tab-content').removeClass('current');
 
-    $(this).addClass('current');
-    $("#" + tab_id).addClass('current');
-  })
+      $(this).addClass('current');
+      $("#" + tab_id).addClass('current');
+    })
 
-  $('.todays-date').text(main.returnDateToday());
+    $('.todays-date').text(main.returnDateToday());
+  }, 500);
 });
 
 $('#main').on('click', function() {
