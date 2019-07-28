@@ -25,4 +25,12 @@ describe('Bookings', function() {
     expect(booking.date).to.equal('2019/07/28');
     expect(booking.returnDateToday()).to.equal('2019/07/28');
   });
+
+  it('should find the most popular booking date', () => {
+    expect(booking.findMostPopularBookingDate()).to.equal('2019/07/28');
+  });
+
+  it('should find the date with most rooms available', () => {
+    expect(booking.findLeastPopularBookingDate()).to.equal('2019/09/27');
+  });
 });
