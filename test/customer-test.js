@@ -20,4 +20,8 @@ describe('Customer', function() {
   it('should store user information', () => {
     expect(customer.userData).to.be.a('array');
   });
+
+  it('should find the customer id', () => {
+    expect(customer.findUserId(1)).to.be.a('object');
+  });
 });
