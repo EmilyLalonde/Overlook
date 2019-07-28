@@ -13,21 +13,25 @@ class Main {
     return `${year}/${month}/${day}`
   }
 
-  findBookingDatesForToday(date = this.date) {
+  findRoomsAvailableToday(date = this.date) {
     let findBookingDates = this.bookingData.filter(function(booking) {
       return booking.date === date;
     })
-    return this.roomData.filter(function(room) {
-      let findMatches = findBookingDates.map(function(booking) {
-        return booking.roomNumber
-      })
-      return 50 - findMatches.length
+    let findMatches = findBookingDates.map(function(booking) {
+      return booking.roomNumber
     })
+    return 50 - findMatches.length
   }
 
-  findTotalRevenueForToday() {
-
-  }
+  // findTotalRevenueForToday(date = this.date) {
+  //   let findBookingDates = this.bookingData.filter(function(booking) {
+  //     return booking.date === date
+  //   })
+  //   let findMatches = findBookingDates.map(function(booking) {
+  //     return booking.roomNumber
+  //   })
+    
+  // }
 
   percentageOfRoomsBookedToday(date = this.date) {
     let bookingsToday = this.bookingData.filter(function(booking) {

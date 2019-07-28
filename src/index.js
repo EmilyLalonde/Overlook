@@ -99,6 +99,7 @@ $(document).ready(function() {
 
     $('.todays-date').text(main.returnDateToday());
     $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
+    $('.rooms-available').text(main.findRoomsAvailableToday());
 
   }, 500);
 });
