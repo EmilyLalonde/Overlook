@@ -15,7 +15,6 @@ class Orders {
     let ordersToday = this.roomServiceData.filter(function(orders) {
       return orders.date === date;
     })
-    console.log(ordersToday)
     return ordersToday
   }
 }
