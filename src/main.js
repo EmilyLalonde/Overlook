@@ -13,22 +13,27 @@ class Main {
     return `${year}/${month}/${day}`
   }
 
-  // findBookingDatesForToday(date = this.date) {
-  //   let findBookingDates = this.bookingData.filter(function(booking) {
-  //     return booking.date === date;
-  //   })
-  //   console.log(findBookingDates)
-  //   let findRooms = this.roomData.filter(function(room) {
-  //     return room === findBookingDates.roomNumber
-  //   })
-  //   return findRooms
-  // }
-
-  percentageOfRoomsBookedToday(date = this.date) {
-    let bookingsToday = this.bookingData.bookings.filter(function(booking) {
+  findBookingDatesForToday(date = this.date) {
+    let findBookingDates = this.bookingData.filter(function(booking) {
       return booking.date === date;
     })
-    return (bookingsToday.length / this.roomData.rooms.length).toFixed(2) * 100;
+    return this.roomData.filter(function(room) {
+      let findMatches = findBookingDates.map(function(booking) {
+        return booking.roomNumber
+      })
+      return 50 - findMatches.length
+    })
+  }
+
+  findTotalRevenueForToday() {
+
+  }
+
+  percentageOfRoomsBookedToday(date = this.date) {
+    let bookingsToday = this.bookingData.filter(function(booking) {
+      return booking.date === date;
+    })
+    return (bookingsToday.length / this.roomData.length).toFixed(2) * 100;
   }
 }
 export default Main

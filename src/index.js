@@ -39,7 +39,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users")
     return response.json();
   })
   .then(function (dataset) {
-    userData = dataset;
+    userData = dataset.users;
   });
 
 let roomData;
@@ -48,7 +48,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms")
     return response.json();
   })
   .then(function (dataset) {
-    roomData = dataset;
+    roomData = dataset.rooms;
   });
 
 let bookingData;
@@ -57,7 +57,7 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings")
     return response.json();
   })
   .then(function (dataset) {
-    bookingData = dataset;
+    bookingData = dataset.bookings;
   });
 
 let roomServiceData;
@@ -66,13 +66,16 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServ
     return response.json();
   })
   .then(function (dataset) {
-    roomServiceData = dataset;
+    roomServiceData = dataset.roomServices;
   });
 
 $(document).ready(function() {
   setTimeout(function () {
     let main = new Main(roomData, roomServiceData, bookingData);
-    // console.log(bookingData.bookings)
+    // console.log(bookingData)
+    // console.log(userData)
+    // console.log(roomData)
+    // console.log(roomServiceData)
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
