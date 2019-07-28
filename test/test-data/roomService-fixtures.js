@@ -12,6 +12,12 @@ const roomServices = [
     totalCost: 17.33
   },
   {
+    userID: 91,
+    date: "2019/07/28",
+    food: "Licensed Soft Sandwich",
+    totalCost: 20.09
+  },
+  {
     userID: 92,
     date: "2019/09/25",
     food: "Tasty Wooden Sandwich",
