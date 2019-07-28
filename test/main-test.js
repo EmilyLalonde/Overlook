@@ -20,8 +20,8 @@ describe('Main', function() {
   });
 
   it('should store todays date', () => {
-    expect(main.date).to.equal('2019/07/27');
-    expect(main.returnDateToday()).to.equal('2019/07/27');
+    expect(main.date).to.equal('2019/07/28');
+    expect(main.returnDateToday()).to.equal('2019/07/28');
   });
 
   it('should store room, room service, and booking information', () => {
@@ -31,14 +31,14 @@ describe('Main', function() {
   });
 
   it('should find the bookings for todays date', () => {
-    expect(main.findBookingDatesForToday()).to.deep.eql([{
-      userID: 99,
-      date: "2019/07/27",
-      roomNumber: 21
-    }]);
+    expect(main.findRoomsAvailableToday()).to.be.a('number');
   });
 
+  // it('should find the total revenue for today', () => {
+  //   expect(main.findTotalRevenueForToday()).to.equal();
+  // });
+
   it('should find the percentage of rooms booked for the day', () => {
-    expect(main.percentageOfRoomsBookedToday()).to.equal(9);
+    expect(main.percentageOfRoomsBookedToday()).to.be.a('number');
   });
 });
