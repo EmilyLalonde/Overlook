@@ -17,6 +17,10 @@ describe('Orders', function() {
     expect(orders).to.be.an.instanceof(Orders);
   });
 
+  it('should store booking information', () => {
+    expect(orders.roomServiceData).to.be.a('array');
+  });
+
   it('should store todays date', () => {
     expect(orders.date).to.equal('2019/07/28');
     expect(orders.returnDateToday()).to.equal('2019/07/28');
