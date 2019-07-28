@@ -30,6 +30,7 @@ import './images/customers-5.jpg'
 import './images/customers-6.jpg'
 import './images/customers-7.jpg'
 import './images/customers-8.jpg'
+import Orders from './orders.js';
 
 //trying to make fetch happen
 
@@ -72,10 +73,11 @@ fetch("https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServ
 $(document).ready(function() {
   setTimeout(function () {
     let main = new Main(roomData, roomServiceData, bookingData);
-    // console.log(bookingData)
-    // console.log(userData)
-    // console.log(roomData)
-    // console.log(roomServiceData)
+    let orders = new Orders(roomServiceData)
+    console.log(bookingData)
+    console.log(userData)
+    console.log(roomData)
+    console.log(roomServiceData)
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();

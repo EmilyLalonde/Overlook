@@ -10,6 +10,14 @@ class Orders {
     let day = String(today.getDate())
     return `${year}/${month}/${day}`
   }
+
+  findAllOrdersForToday(date = this.date) {
+    let ordersToday = this.roomServiceData.filter(function(orders) {
+      return orders.date === date;
+    })
+    console.log(ordersToday)
+    return ordersToday
+  }
 }
 
 export default Orders
