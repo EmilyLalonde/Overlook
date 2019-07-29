@@ -74,10 +74,10 @@ $(document).ready(function() {
   setTimeout(function () {
     let main = new Main(roomData, roomServiceData, bookingData);
     let orders = new Orders(roomServiceData)
-    console.log(bookingData)
-    console.log(userData)
-    console.log(roomData)
-    console.log(roomServiceData)
+    // console.log(bookingData)
+    // console.log(userData)
+    // console.log(roomData)
+    // console.log(roomServiceData)
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
@@ -99,9 +99,31 @@ $(document).ready(function() {
       $("#" + tab_id).addClass('current');
     })
 
+    // function findCurrentUser() {
+    //   let currentUser = $('#existing-customer');
+    //   $('.find-current-user').on('click', function() {
+    //     if (currentUser === userData.name) {
+    //       return userData;
+    //     }
+    //   })
+    // }
+
     $('.todays-date').text(main.returnDateToday());
     $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
     $('.rooms-available').text(main.findRoomsAvailableToday());
+
+    function findSelectedDateForOrders() {
+      $('.find-date-orders').on('click', function() {
+        let selectedDate = new Date($('#orders-on-date').val());
+        let year = selectedDate.getFullYear();
+        let month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+        let day = selectedDate.getDate() + 1
+        console.log(`${year}/${month}/${day}`)
+        return `${year}/${month}/${day}`
+      });
+    }
+  
+    findSelectedDateForOrders()
 
   }, 500);
 });
