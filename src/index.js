@@ -1,6 +1,8 @@
 //image and file imports
 import $ from 'jquery';
 import Main from './main.js'
+import Orders from './orders.js';
+import domUpdates from '../src/domUpdates.js';
 import './css/base.scss';
 import './images/twitter.svg'
 import './images/instagram.svg'
@@ -30,8 +32,7 @@ import './images/customers-5.jpg'
 import './images/customers-6.jpg'
 import './images/customers-7.jpg'
 import './images/customers-8.jpg'
-import Orders from './orders.js';
-import domUpdates from '../src/domUpdates.js';
+
 
 //trying to make fetch happen
 
@@ -75,10 +76,6 @@ $(document).ready(function() {
   setTimeout(function () {
     let main = new Main(roomData, roomServiceData, bookingData);
     let orders = new Orders(roomServiceData)
-    // console.log(bookingData)
-    // console.log(userData)
-    // console.log(roomData)
-    // console.log(roomServiceData)
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
@@ -100,27 +97,9 @@ $(document).ready(function() {
       $("#" + tab_id).addClass('current');
     })
 
-    // function findCurrentUser() {
-    //   let currentUser = $('#existing-customer');
-    //   $('.find-current-user').on('click', function() {
-    //     if (currentUser === userData.name) {
-    //       return userData;
-    //     }
-    //   })
-    // }
-
     $('.todays-date').text(main.returnDateToday());
     $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
     $('.rooms-available').text(main.findRoomsAvailableToday());
-    
-    // function findOrdersForSelectedDate() {
-    //   let dateSelected = domUpdates.findSelectedDateForOrders()
-    //   let ordersData = roomServiceData.filter(function(order) {
-    //     return order.date === dateSelected
-    //   })
-    //   console.log(ordersData)
-    //   return ordersData
-    // }
 
     function findSelectedDateForOrders() {
       let selectedDate = new Date($('#orders-on-date').val());
@@ -134,15 +113,10 @@ $(document).ready(function() {
       console.log(ordersData)
       return ordersData
     }
-  
 
     $('.find-date-orders').on('click', function() {
       findSelectedDateForOrders();
     })
-
-    // $('.display-orders-data').on('click', function() {
-    //   findSelectedDateForOrders();
-    // })
 
   }, 500);
 });
