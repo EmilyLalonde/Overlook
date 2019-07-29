@@ -31,6 +31,7 @@ import './images/customers-6.jpg'
 import './images/customers-7.jpg'
 import './images/customers-8.jpg'
 import Orders from './orders.js';
+import domUpdates from '../src/domUpdates.js';
 
 //trying to make fetch happen
 
@@ -111,19 +112,7 @@ $(document).ready(function() {
     $('.todays-date').text(main.returnDateToday());
     $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
     $('.rooms-available').text(main.findRoomsAvailableToday());
-
-    function findSelectedDateForOrders() {
-      $('.find-date-orders').on('click', function() {
-        let selectedDate = new Date($('#orders-on-date').val());
-        let year = selectedDate.getFullYear();
-        let month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-        let day = selectedDate.getDate() + 1
-        console.log(`${year}/${month}/${day}`)
-        return `${year}/${month}/${day}`
-      });
-    }
-  
-    findSelectedDateForOrders()
+    domUpdates.findSelectedDateForOrders()
 
   }, 500);
 });
