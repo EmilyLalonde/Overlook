@@ -112,7 +112,37 @@ $(document).ready(function() {
     $('.todays-date').text(main.returnDateToday());
     $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
     $('.rooms-available').text(main.findRoomsAvailableToday());
-    domUpdates.findSelectedDateForOrders()
+    
+    // function findOrdersForSelectedDate() {
+    //   let dateSelected = domUpdates.findSelectedDateForOrders()
+    //   let ordersData = roomServiceData.filter(function(order) {
+    //     return order.date === dateSelected
+    //   })
+    //   console.log(ordersData)
+    //   return ordersData
+    // }
+
+    function findSelectedDateForOrders() {
+      let selectedDate = new Date($('#orders-on-date').val());
+      let year = selectedDate.getFullYear();
+      let month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      let day = String(selectedDate.getDate() + 1).padStart(2, '0');
+      let dayPicked = `${year}/${month}/${day}`
+      let ordersData = roomServiceData.filter(function(order) {
+        return order.date === dayPicked
+      })
+      console.log(ordersData)
+      return ordersData
+    }
+  
+
+    $('.find-date-orders').on('click', function() {
+      findSelectedDateForOrders();
+    })
+
+    // $('.display-orders-data').on('click', function() {
+    //   findSelectedDateForOrders();
+    // })
 
   }, 500);
 });

@@ -79,8 +79,9 @@
       <section class="tab-content" id="orders-tab">
         blah blah blah 444
         <label for="orders-on-date">Choose Date To Check For All Orders</label>
-        <input type="date" id="orders-on-date" min="2019-07-25" max="2019-10-28">
+        <input type="date" id="orders-on-date" min="2019-07-25" max="2019-10-28" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}">
         <button type="submit" class="find-date-orders">Submit</button>
+        <button type="submit" class="display-orders-data">Find Orders</button>
       </section>
       <footer class="orders-tab-footer">
         <img src="../images/orders-1.jpg" class="orders-footer" id="order-1">
