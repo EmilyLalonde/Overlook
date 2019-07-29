@@ -1,5 +1,3 @@
-import domUpdates from '../src/domUpdates.js';
-
 class Orders {
   constructor(roomServiceData) {
     this.roomServiceData = roomServiceData;
