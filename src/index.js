@@ -111,7 +111,13 @@ $(document).ready(function() {
         return order.date === dayPicked
       })
       console.log(ordersData)
-      return ordersData
+      if (ordersData.length > 0) {
+        return ordersData
+      } else {
+        console.log('Sorry there were no orders today')
+        return 'Sorry there were no orders today'
+      }
+      
     }
 
     $('.find-date-orders').on('click', function() {
