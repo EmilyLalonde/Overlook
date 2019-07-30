@@ -38,8 +38,16 @@ describe('Main', function() {
     expect(main.findBookedRoomsToday()).to.be.a('array');
   });
 
+  it('should find the total room revenue for today', () => {
+    expect(main.findTotalRoomRevenueToday()).to.be.a('number');
+  });
+
+  it('should find the total orders revenue for today', () => {
+    expect(main.findTotalOrdersRevenueToday()).to.be.a('number');
+  });
+
   it('should find the total revenue for today', () => {
-    expect(main.findTotalRevenueToday()).to.be.a('number');
+    expect(main.findTotalRevenueForToday()).to.be.a('number');
   });
 
   it('should find the percentage of rooms booked for the day', () => {
