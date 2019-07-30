@@ -45,7 +45,6 @@ class Bookings {
         return currentValue;
       }
     });
-    console.log(leastPopular)
     return leastPopular
   }
 }

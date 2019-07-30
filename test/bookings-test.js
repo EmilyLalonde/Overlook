@@ -22,8 +22,8 @@ describe('Bookings', function() {
   });
 
   it('should store todays date', () => {
-    expect(booking.date).to.equal('2019/07/28');
-    expect(booking.returnDateToday()).to.equal('2019/07/28');
+    expect(booking.date).to.equal('2019/07/30');
+    expect(booking.returnDateToday()).to.equal('2019/07/30');
   });
 
   it('should find the most popular booking date', () => {

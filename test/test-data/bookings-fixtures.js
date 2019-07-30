@@ -5,6 +5,11 @@ const bookings = [
     roomNumber: 5
   },
   {
+    userID: 94,
+    date: "2019/07/30",
+    roomNumber: 41
+  },
+  {
     userID: 17,
     date: "2019/10/19",
     roomNumber: 28
@@ -68,11 +73,6 @@ const bookings = [
     userID: 98,
     date: "2019/08/27",
     roomNumber: 37
-  },
-  {
-    userID: 33,
-    date: "2019/08/27",
-    roomNumber: 27
   },
   {
     userID: 7,
