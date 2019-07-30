@@ -33,11 +33,10 @@ class Main {
     return findBookingDates
   }
 
-  findTotalRevenueToday(date = this.date) {
+  findTotalRoomRevenueToday(date = this.date) {
     let roomData = this.roomData
     let bookedRoomNum = this.findBookedRoomsToday(date)
     let roomRevenue = bookedRoomNum.reduce(function(acc, num) {
-      console.log(roomData)
       roomData.forEach(function(room) {
         if (num === room.number) {
           acc += room.costPerNight
@@ -46,6 +45,21 @@ class Main {
       return acc
     }, 0)
     return roomRevenue
+  }
+
+  findTotalOrdersRevenueToday(date = this.date) {
+    let ordersRevenue = this.roomServiceData.reduce(function(acc, order) {
+      if (order.date === date) {
+        acc += ordersRevenue.totalCost
+      }
+      return acc
+    }, 0)
+    return ordersRevenue
+  }
+
+  findTotalRevenueForToday(date = this.date) {
+    console.log(this.findTotalRoomRevenueToday(date) + this.findTotalOrdersRevenueToday(date))
+    return this.findTotalRoomRevenueToday(date) + this.findTotalOrdersRevenueToday(date)
   }
 
   percentageOfRoomsBookedToday(date = this.date) {
