@@ -22,8 +22,8 @@ describe('Orders', function() {
   });
 
   it('should store todays date', () => {
-    expect(orders.date).to.equal('2019/07/28');
-    expect(orders.returnDateToday()).to.equal('2019/07/28');
+    expect(orders.date).to.equal('2019/07/30');
+    expect(orders.returnDateToday()).to.equal('2019/07/30');
   });
 
   it('should find all room service orders for todays date', () => {
