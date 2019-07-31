@@ -58,7 +58,6 @@ class Main {
   }
 
   findTotalRevenueForToday(date = this.date) {
-    console.log(this.findTotalRoomRevenueToday(date) + this.findTotalOrdersRevenueToday(date))
     return this.findTotalRoomRevenueToday(date) + this.findTotalOrdersRevenueToday(date)
   }
 
