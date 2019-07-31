@@ -153,7 +153,6 @@ $('.find-current-user').on('click', function(e) {
   let customerInfo = createCustomer(userName);
   let totalRoomService = findTotalRoomServiceEver(userName);
   $('.total-order').text(totalRoomService)
-  console.log('room service total', totalRoomService)
   let roomsAvailable = main.findAvalilibility();
   let availableRooms = roomsAvailable.map(function(room) {
     return (`<input type="radio" name="rooms" class="rooms" value=${room.number}> Room Type: ${room.roomType}  Bidet: ${room.bidet}  Bed Size: ${room.bedSize}  Number of Beds:  ${room.numBeds} <br>`)

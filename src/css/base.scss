@@ -1,3 +1,5 @@
+@import 'variables';
+
 body {
   margin: 0;
   background-color: $neutral-color;
@@ -11,36 +13,33 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-}
+    .splash-box {
+      background-color: $neutral-color;
+      border: 2px solid $neutral-color;
+      border-radius: 8px;
+      height: 400px;
+       margin-top: 20%;
+       opacity: .8;
+      text-align: center;
+      width: 700px;
+  }
+    .splash-page-h1 {
+        font-size: 70px;
+        margin-top: 15%;
+  }
+     .h1-span {
+        font-style: italic;
+    }
 
-.splash-box {
-  background-color: $neutral-color;
-  border: 2px solid $neutral-color;
-  border-radius: 8px;
-  height: 400px;
-  margin-top: 20%;
-  opacity: .8;
-  text-align: center;
-  width: 700px;
-}
-
-.splash-page-h1 {
-  font-size: 70px;
-  margin-top: 15%;
-}
-
-.h1-span {
-  font-style: italic;
-}
-
-.splash-page-h2 {
-  font-size: 30px;
-}
-
-.splash-page-enter-button {
-  font-size: 22px;
-  height: 50px;
-  width: 600px;
+    .splash-page-h2 {
+      font-size: 30px;
+    }
+    
+    .splash-page-enter-button {
+      font-size: 22px;
+      height: 50px;
+      width: 600px;
+    }
 }
 
 ul.tabs{
