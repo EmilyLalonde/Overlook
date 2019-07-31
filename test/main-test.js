@@ -51,7 +51,7 @@ describe('Main', function() {
   });
 
   it('should find the total revenue for today', () => {
-    expect(main.findTotalRevenueForToday()).to.equal(225.04);
+    expect(main.findTotalRevenueForToday()).to.equal('225.04');
   });
 
   it('should find the percentage of rooms booked for the day', () => {

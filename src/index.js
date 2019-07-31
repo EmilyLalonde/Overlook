@@ -158,15 +158,41 @@ $('.show-all-orders-today').on('click', function(e) {
 $('.find-current-user').on('click', function(e) {
   e.preventDefault();
   let main = new Main(roomData, roomServiceData, bookingData);
-  let userName = $('#existing-customer').val()
-  let customerInfo = createCustomer(userName)
+  let userName = $('#existing-customer').val();
+  let customerInfo = createCustomer(userName);
+  let totalRoomService = findTotalRoomServiceEver(userName);
+  $('.total-order').text(totalRoomService)
+  console.log('room service total', totalRoomService)
   let roomsAvailable = main.findAvalilibility();
   let availableRooms = roomsAvailable.map(function(room) {
-    return (`<input type="radio"> Room Type: ${room.roomType}  Bidet: ${room.bidet}  Bed Size: ${room.bedSize}  Number of Beds:  ${room.numBeds} <br>`)
+    return (`<input type="radio" name="rooms" class="rooms" value=${room.number}> Room Type: ${room.roomType}  Bidet: ${room.bidet}  Bed Size: ${room.bedSize}  Number of Beds:  ${room.numBeds} <br>`)
+  })
+  $('#search-room-type').on('keyup', function() {
+    let searchInputValue = $('#search-room-type').val()
+    let filteredRooms = roomsAvailable.filter(function(room) {
+      return room.roomType.includes(searchInputValue);
+    })
+    availableRooms = filteredRooms.map(function(room) {
+      return (`<input type="radio" name="rooms" class="rooms" value=${room.number}> Room Type: ${room.roomType}  Bidet: ${room.bidet}  Bed Size: ${room.bedSize}  Number of Beds:  ${room.numBeds} <br>`)
+    })
+    $('.available-rooms-today').html(availableRooms.join(''))
   })
   $('.available-rooms-today').html(availableRooms.join(''))
 
+  $('.book-room-button').on('click', function() {
+    let selectedRoomObj;
+    if ($('input[type="radio"].rooms').is(':checked')) {
+      let selectedRoomId = $('input[type="radio"].rooms:checked').val();
+      selectedRoomObj = roomsAvailable.find(function(room) {
+        return room.number === parseInt(selectedRoomId)
+      })
+      $('.booking-made-today').text(` Room Type: ${selectedRoomObj.roomType}  Bidet: ${selectedRoomObj.bidet}  Bed Size: ${selectedRoomObj.bedSize}  Number of Beds:  ${selectedRoomObj.numBeds}`)
+    }
+   
+  })
+
   $('.user-name').text(customerInfo.name)
+
 
   let userOrderHistory = customerInfo.roomService.map(function(order) {
     return (`<li> Date:  ${order.date}  Price:   ${order.totalCost} </li>`)
@@ -193,17 +219,19 @@ function createCustomer(userName) {
   return customer
 }
 
-// function findAllTimeRoomServieCost() {
-  
-//   let userServiceData = roomServiceData.filter(function(snack) {
-//     return snack.userID === currentUser.id
-//   })
-//   let serviceCharges = userServiceData.reduce(function(acc, food) {
-//     acc += food.totalCost
-//     return acc
-//   }, 0)
-//   return serviceCharges
-// }
+function findTotalRoomServiceEver(userName) {
+  let currentUser = userData.find(function(user) {
+    return user.name === userName
+  })
+  let userRoomServiceData = roomServiceData.filter(function(roomService) {
+    return roomService.userID === currentUser.id
+  })
+  let orders = userRoomServiceData.reduce(function(acc, order) {
+    acc += order.totalCost
+    return acc
+  }, 0)
+  return orders
+}
 
 $('#main').on('click', function() {
   $('.main-tab-footer').show();
