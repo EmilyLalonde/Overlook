@@ -1,28 +1,11 @@
 class Customer {
-  constructor(roomService, name, id) {
-    this.roomService = roomService;
-    this.name = name;
+  constructor(id, name, roomService, bookingData) {
     this.id = id;
+    this.name = name;
+    this.roomService = roomService;
+    this.booking = bookingData
   }
 
-  
-
-
-
-
-
-  // findUserRoomServicePurchases(id) {
-  //   let purchases = this.roomService.filter(function(orders) {
-  //     if (orders.userID === id) {
-  //       return {
-  //         date: orders.date,
-  //         price: orders.totalCost
-  //       }
-  //     }
-  //   })
-  //   console.log(purchases)
-  //   return purchases
-  // }
 }
 
 export default Customer
