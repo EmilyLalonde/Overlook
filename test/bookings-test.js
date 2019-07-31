@@ -22,15 +22,15 @@ describe('Bookings', function() {
   });
 
   it('should store todays date', () => {
-    expect(booking.date).to.equal('2019/07/30');
-    expect(booking.returnDateToday()).to.equal('2019/07/30');
+    expect(booking.date).to.equal('2019/07/31');
+    expect(booking.returnDateToday()).to.equal('2019/07/31');
   });
 
   it('should find the most popular booking date', () => {
-    expect(booking.findMostPopularBookingDate()).to.equal('2019/07/28');
+    expect(booking.findMostPopularBookingDate()).to.equal('2019/07/31');
   });
 
   it('should find the date with most rooms available', () => {
-    expect(booking.findLeastPopularBookingDate()).to.equal('2019/09/27');
+    expect(booking.findLeastPopularBookingDate()).to.equal('2019/07/27');
   });
 });

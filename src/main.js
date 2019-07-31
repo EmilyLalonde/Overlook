@@ -56,6 +56,7 @@ class Main {
       })
       return acc
     }, 0)
+    console.log(roomRevenue)
     return roomRevenue
   }
 

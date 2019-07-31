@@ -3,7 +3,6 @@ import $ from 'jquery';
 import Main from './main.js'
 import Orders from './orders.js';
 import Bookings from './bookings.js'
-import domUpdates from '../src/domUpdates.js';
 import './css/base.scss';
 import './images/twitter.svg'
 import './images/instagram.svg'
@@ -82,7 +81,6 @@ $(document).ready(function() {
     $('.orders-tab-footer').hide();
     $('.customers-tab-footer').hide();
 
-
     $('.splash-page-enter-button').on('click', () => {
       $('.splash-page').hide();
       $('.main-site').show();
@@ -90,10 +88,8 @@ $(document).ready(function() {
 
     $('ul.tabs li').click(function() {
       var tab_id = $(this).attr('data-tab');
-
       $('ul.tabs li').removeClass('current');
       $('.tab-content').removeClass('current');
-
       $(this).addClass('current');
       $("#" + tab_id).addClass('current');
     })
@@ -102,24 +98,8 @@ $(document).ready(function() {
     $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
     $('.rooms-available').text(main.findRoomsAvailableToday());
     $('.daily-revenue').text('$' + main.findTotalRevenueForToday());
-    
-
-    function findSelectedDateForOrders() {
-      let selectedDate = new Date($('#orders-on-date').val());
-      let year = selectedDate.getFullYear();
-      let month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-      let day = String(selectedDate.getDate() + 1).padStart(2, '0');
-      let dayPicked = `${year}/${month}/${day}`
-      let ordersData = roomServiceData.filter(function(order) {
-        return order.date === dayPicked
-      })
-      if (ordersData.length > 0) {
-        return ordersData
-      } else {
-        console.log('Sorry there were no orders today')
-        return 'Sorry there were no orders today'
-      }
-    }
+    $('.popular-booking-date').text(booking.findMostPopularBookingDate());
+    $('.unpopular-booking-date').text(booking.findLeastPopularBookingDate());
 
     // function findSelectedDateForRooms() {
     //   let selectedDate = new Date($('#rooms-by-date').val());
@@ -137,21 +117,41 @@ $(document).ready(function() {
     //   return findBookingDates
     // }
 
+    function findSelectedDateForOrders() {
+      let selectedDate = new Date($('#orders-on-date').val());
+      let year = selectedDate.getFullYear();
+      let month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      let day = String(selectedDate.getDate() + 1).padStart(2, '0');
+      let dayPicked = `${year}/${month}/${day}`
+      let ordersData = roomServiceData.filter(function(order) {
+        return order.date === dayPicked
+      })
+      if (ordersData.length > 0) {
+        return ordersData
+      } else {
+        return 'Sorry there were no orders today'
+      }
+    }
+    
     $('.find-date-orders').on('click', function() {
-      findSelectedDateForOrders();
+      let selectedOrders = findSelectedDateForOrders();
+      let pickedDate = selectedOrders.map(function(order) {
+        return (`<li> Date:  ${order.date}  Food:  ${order.food}  Price:  ${order.totalCost} </li>`)
+      })
+      $('.date-selected-orders').html(pickedDate.join(''))
     })
     
   }, 500);
 });
 
-$('.find-date-orders').on('click', function(e) {
+$('.show-all-orders-today').on('click', function(e) {
   e.preventDefault();
   let orders = new Orders(roomServiceData)
   let ordersBasedOnDate = orders.findAllOrdersForToday();
   let ordersSelectedDate = ordersBasedOnDate.map(function(orderList) {
     return (`<li> Date:  ${orderList.date}  Food:  ${orderList.food}  Price:  ${orderList.totalCost} </li>`)
   })
-  $('.orders-for-selected-date').html(ordersSelectedDate.join(''))
+  $('.orders-for-today').html(ordersSelectedDate.join(''))
 })
 
 $('.find-current-user').on('click', function(e) {
@@ -163,7 +163,7 @@ $('.find-current-user').on('click', function(e) {
   let availableRooms = roomsAvailable.map(function(room) {
     return (`<li> Room Type: ${room.roomType}  Bidet: ${room.bidet}  Bed Size: ${room.bedSize}  Number of Beds:  ${room.numBeds} </li>`)
   })
-  $('.user-all-history').html(availableRooms.join(''))
+  $('.available-rooms-today').html(availableRooms.join(''))
 
   $('.user-name').text(customerInfo.name)
 
@@ -188,10 +188,21 @@ function createCustomer(userName) {
   let userBookingData = bookingData.filter(function(booking) {
     return booking.userID === currentUser.id
   })
-  console.log(userBookingData)
   let customer = new Customer(currentUser.id, currentUser.name, userRoomServiceData,  userBookingData)
   return customer
 }
+
+// function findAllTimeRoomServieCost() {
+  
+//   let userServiceData = roomServiceData.filter(function(snack) {
+//     return snack.userID === currentUser.id
+//   })
+//   let serviceCharges = userServiceData.reduce(function(acc, food) {
+//     acc += food.totalCost
+//     return acc
+//   }, 0)
+//   return serviceCharges
+// }
 
 $('#main').on('click', function() {
   $('.main-tab-footer').show();
