@@ -34,8 +34,12 @@ describe('Main', function() {
     expect(main.findRoomsAvailableToday()).to.be.a('number');
   });
 
-  it('should find the total revenue for today', () => {
+  it('should find the booked rooms for today', () => {
     expect(main.findBookedRoomsToday()).to.be.a('array');
+  });
+
+  it('should find the available rooms for today', () => {
+    expect(main.findAvalilibility()).to.be.a('array');
   });
 
   it('should find the total room revenue for today', () => {

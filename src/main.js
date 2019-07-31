@@ -32,7 +32,19 @@ class Main {
     }, [])
     return findBookingDates
   }
-
+ 
+  findAvalilibility(date = this.date) {
+    let roomsTaken = this.bookingData.filter(function(booking) {
+      return booking.date === date
+    })
+    let availableRooms = this.roomData.filter(function(room) {
+      return roomsTaken.find(function(taken) {
+        return taken.roomNumber !== room.number
+      })
+    })
+    return availableRooms
+  }
+  
   findTotalRoomRevenueToday(date = this.date) {
     let roomData = this.roomData
     let bookedRoomNum = this.findBookedRoomsToday(date)
@@ -50,7 +62,7 @@ class Main {
   findTotalOrdersRevenueToday(date = this.date) {
     let ordersRevenue = this.roomServiceData.reduce(function(acc, order) {
       if (order.date === date) {
-        acc += ordersRevenue.totalCost
+        acc += order.totalCost
       }
       return acc
     }, 0)
