@@ -22,11 +22,16 @@ describe('Orders', function() {
   });
 
   it('should store todays date', () => {
-    expect(orders.date).to.equal('2019/07/30');
-    expect(orders.returnDateToday()).to.equal('2019/07/30');
+    expect(orders.date).to.equal('2019/07/31');
+    expect(orders.returnDateToday()).to.equal('2019/07/31');
   });
 
   it('should find all room service orders for todays date', () => {
-    expect(orders.findAllOrdersForToday()).to.be.a('array');
+    expect(orders.findAllOrdersForToday()).to.deep.eql([{
+      userID: 69,
+      date: "2019/07/31",
+      food: "Incredible Granite Sandwich",
+      totalCost: 9.28
+    }]);
   });
 });

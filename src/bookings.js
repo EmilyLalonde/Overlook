@@ -10,6 +10,7 @@ class Bookings {
     let day = today.getDate()
     return `${year}/${month}/${day}`
   }
+
   findMostPopularBookingDate() {
     let datesObj = this.bookingData.reduce(function(date, booking) {
       if (!date[booking.date]) {
@@ -45,6 +46,7 @@ class Bookings {
         return currentValue;
       }
     });
+    console.log(leastPopular)
     return leastPopular
   }
   

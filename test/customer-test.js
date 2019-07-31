@@ -1,13 +1,13 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Customer from '../src/customer'
-import users from './test-data/users-fixtures'
 import roomService from './test-data/roomService-fixtures'
+import bookings from './test-data/bookings-fixtures'
 describe('Customer', function() {
 
   let customer;
   beforeEach(() => {
-    customer = new Customer(users, roomService);
+    customer = new Customer(1, 'Matilde Larson', roomService, bookings);
   });
 
   it('should be a function', () => {
@@ -18,15 +18,16 @@ describe('Customer', function() {
     expect(customer).to.be.an.instanceof(Customer);
   });
 
-  it('should store user information', () => {
-    expect(customer.userData).to.be.a('array');
+  it('should hold a users id', () => {
+    expect(customer.id).to.equal(1);
   });
 
-  it('should find the customer id', () => {
-    expect(customer.findUserId(1)).to.be.a('object');
+  it('should hold a user name', () => {
+    expect(customer.name).to.equal('Matilde Larson');
   });
 
-  it('should find all room service history for customer', () => {
-    expect(customer.findUserRoomServicePurchases(100)).to.equal();
+  it('should store room service and booking information', () => {
+    expect(customer.roomService).to.be.a('array');
+    expect(customer.booking).to.be.a('array');
   });
 });
