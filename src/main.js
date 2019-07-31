@@ -56,7 +56,6 @@ class Main {
       })
       return acc
     }, 0)
-    console.log(roomRevenue)
     return roomRevenue
   }
 
@@ -71,7 +70,7 @@ class Main {
   }
 
   findTotalRevenueForToday(date = this.date) {
-    return this.findTotalRoomRevenueToday(date) + this.findTotalOrdersRevenueToday(date)
+    return (this.findTotalRoomRevenueToday(date) + this.findTotalOrdersRevenueToday(date)).toFixed(2)
   }
 
   percentageOfRoomsBookedToday(date = this.date) {

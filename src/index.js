@@ -80,6 +80,7 @@ $(document).ready(function() {
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
     $('.customers-tab-footer').hide();
+    
 
     $('.splash-page-enter-button').on('click', () => {
       $('.splash-page').hide();
@@ -94,10 +95,10 @@ $(document).ready(function() {
       $("#" + tab_id).addClass('current');
     })
 
-    $('.todays-date').text(main.returnDateToday());
-    $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
-    $('.rooms-available').text(main.findRoomsAvailableToday());
-    $('.daily-revenue').text('$' + main.findTotalRevenueForToday());
+    $('#todays-date').text(main.returnDateToday());
+    $('#percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
+    $('#rooms-available').text(main.findRoomsAvailableToday());
+    $('#daily-revenue').text('$' + main.findTotalRevenueForToday());
     $('.popular-booking-date').text(booking.findMostPopularBookingDate());
     $('.unpopular-booking-date').text(booking.findLeastPopularBookingDate());
 
@@ -161,19 +162,19 @@ $('.find-current-user').on('click', function(e) {
   let customerInfo = createCustomer(userName)
   let roomsAvailable = main.findAvalilibility();
   let availableRooms = roomsAvailable.map(function(room) {
-    return (`<li> Room Type: ${room.roomType}  Bidet: ${room.bidet}  Bed Size: ${room.bedSize}  Number of Beds:  ${room.numBeds} </li>`)
+    return (`<input type="radio"> Room Type: ${room.roomType}  Bidet: ${room.bidet}  Bed Size: ${room.bedSize}  Number of Beds:  ${room.numBeds} <br>`)
   })
   $('.available-rooms-today').html(availableRooms.join(''))
 
   $('.user-name').text(customerInfo.name)
 
   let userOrderHistory = customerInfo.roomService.map(function(order) {
-    return (`<li> ${order.date}  :  ${order.totalCost} </li>`)
+    return (`<li> Date:  ${order.date}  Price:   ${order.totalCost} </li>`)
   })
   $('.user-room-service').html(userOrderHistory.join(''))
 
   let userBookingHistory = customerInfo.booking.map(function(stay) {
-    return (`<li> ${stay.date}  :  ${stay.roomNumber} </li>`)
+    return (`<li> Date:  ${stay.date}  Room Number: ${stay.roomNumber} </li>`)
   })
   $('.user-bookings').html(userBookingHistory.join(' '))
 })
