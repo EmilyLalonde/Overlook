@@ -47,6 +47,7 @@ class Bookings {
     });
     return leastPopular
   }
+  
 }
 
 export default Bookings

@@ -2,6 +2,7 @@
 import $ from 'jquery';
 import Main from './main.js'
 import Orders from './orders.js';
+import Bookings from './bookings.js'
 import domUpdates from '../src/domUpdates.js';
 import './css/base.scss';
 import './images/twitter.svg'
@@ -32,7 +33,7 @@ import './images/customers-5.jpg'
 import './images/customers-6.jpg'
 import './images/customers-7.jpg'
 import './images/customers-8.jpg'
-
+import Customer from './customer.js';
 
 //trying to make fetch happen
 
@@ -76,6 +77,7 @@ $(document).ready(function() {
   setTimeout(function () {
     let main = new Main(roomData, roomServiceData, bookingData);
     let orders = new Orders(roomServiceData)
+    let booking = new Bookings(bookingData)
     $('.main-site').hide();
     $('.rooms-tab-footer').hide();
     $('.orders-tab-footer').hide();
@@ -100,6 +102,8 @@ $(document).ready(function() {
     $('.todays-date').text(main.returnDateToday());
     $('.percentage-rooms').text(main.percentageOfRoomsBookedToday() + '%');
     $('.rooms-available').text(main.findRoomsAvailableToday());
+    $('.daily-revenue').text('$' + main.findTotalRevenueForToday());
+    
 
     function findSelectedDateForOrders() {
       let selectedDate = new Date($('#orders-on-date').val());
@@ -108,6 +112,7 @@ $(document).ready(function() {
       let day = String(selectedDate.getDate() + 1).padStart(2, '0');
       let dayPicked = `${year}/${month}/${day}`
       let ordersData = roomServiceData.filter(function(order) {
+        console.log(dayPicked)
         return order.date === dayPicked
       })
       console.log(ordersData)
@@ -117,15 +122,91 @@ $(document).ready(function() {
         console.log('Sorry there were no orders today')
         return 'Sorry there were no orders today'
       }
-      
     }
+
+    function findSelectedDateForRooms() {
+      let selectedDate = new Date($('#rooms-by-date').val());
+      let year = selectedDate.getFullYear();
+      let month = String(selectedDate.getMonth() + 1).padStart(2, '0');
+      let day = String(selectedDate.getDate() + 1).padStart(2, '0');
+      let daySelected = `${year}/${month}/${day}`
+      let findBookingDates = bookingData.reduce(function(acc, room) {
+        if (room.date === daySelected) {
+          acc.push(room.roomNumber)
+        }
+        return acc
+      }, [])
+      console.log(findBookingDates)
+      return findBookingDates
+    }
+
+    function findRoomsAvailableToday() {
+      let bookings = findSelectedDateForRooms();
+      let roomsAvailableToday = bookings.reduce(function(acc, num) {
+        console.log(num)
+        roomData.forEach(function(room) {
+          console.log(room)
+          if (num !== room.number) {
+            acc.push(room)
+          }
+        })
+        return acc
+      }, [])
+      console.log(roomsAvailableToday)
+      return roomsAvailableToday
+    }
+
+    // function displayName() {
+    //   e.preventDefault();
+    //   let currentUserName = $('#existing-customer').val()
+    //   $('.find-current-user').on('click', function(e) {
+    //     $('.user-name').text(currentUserName)
+    //   })
+    // }
+
+    // displayName()
 
     $('.find-date-orders').on('click', function() {
       findSelectedDateForOrders();
     })
 
+    $('.find-available-rooms-today').on('click', function() {
+      findRoomsAvailableToday();
+    })
   }, 500);
 });
+
+
+
+$('.find-current-user').on('click', function(e) {
+  e.preventDefault();
+  let userName = $('#existing-customer').val()
+  let customerInfo = createCustomer(userName)
+  $('.user-name').text(customerInfo.name)
+  console.log(customerInfo)
+  let userOrderHistory = customerInfo.roomService.map(function(order) {
+    return (`<li> ${order.date}  :  ${order.totalCost} </li>`)
+  })
+  $('.user-room-service').html(userOrderHistory.join(''))
+  
+})
+
+function createCustomer(userName) {
+  let currentUser = userData.find(function(user) {
+    return user.name === userName
+  })
+  let userRoomServiceData = roomServiceData.filter(function(roomService) {
+    return roomService.userID === currentUser.id
+  })
+  let customer = new Customer(userRoomServiceData, currentUser.name, currentUser.id)
+  return customer
+}
+
+
+
+// $('.find-current-user').click(function(e) {
+//   e.preventDefault();
+// })
 
 $('#main').on('click', function() {
   $('.main-tab-footer').show();

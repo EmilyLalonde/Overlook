@@ -78,7 +78,7 @@ ul.tabs li.current{
 
 .tab-content.current{
   display: inherit;
-  margin-top: 30px;
+  margin-top: 10px;
   height: 70vh;
 }
 
@@ -174,4 +174,9 @@ label {
   margin-top: 8px;
   margin-left: 25px;
   width: 150px;
+}
+
+p{
+  margin: 0;
+  padding: 0;
 }

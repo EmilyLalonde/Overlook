@@ -28,6 +28,7 @@
         <li class="tab-link" data-tab="orders-tab" id="orders">Orders</li>
         <li class="main-page-header">Overlook</li>
       </ul>
+      <p>Welcome <span class="user-name"></span></p>
       <section class="tab-content current" id="main-tab">
         <h4 class="date-today">Today's Date</h4>
         <span class="todays-date"></span>
@@ -35,6 +36,8 @@
         <span class="rooms-available"></span>
         <h4 class="percentage-booked-rooms">Percentage of Rooms Booked Today</h4>
         <span class="percentage-rooms"></span>
+        <h4 class="total-daily-revenue">Total Revenue For Today</h4>
+        <span class="daily-revenue"></span>
       </section>
       <footer class="main-tab-footer">
         <h5 class="social-media-promp">Visit Us On Social Media</h5>
@@ -64,7 +67,9 @@
         <img src="../images/customers-8.jpg" class="customers-footer" id="customer-8">
       </footer>
       <section class="tab-content" id="rooms-tab">
-        blah blah blah 333
+        <label for="rooms-by-date">Choose Date To Check For All Rooms Available</label>
+        <input type="date" id="rooms-by-date" min="2019-07-25" max="2019-10-28" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}">
+        <button type="submit" class="find-available-rooms-today">Submit</button>
       </section>
       <footer class="rooms-tab-footer">
         <img src="../images/rooms-1.jpg" class="rooms-footer" id="room-1">
@@ -77,11 +82,10 @@
         <img src="../images/rooms-8.jpg" class="rooms-footer" id="room-8">
       </footer>
       <section class="tab-content" id="orders-tab">
-        blah blah blah 444
         <label for="orders-on-date">Choose Date To Check For All Orders</label>
         <input type="date" id="orders-on-date" min="2019-07-25" max="2019-10-28" required pattern="[0-9]{4}/[0-9]{2}/[0-9]{2}">
         <button type="submit" class="find-date-orders">Submit</button>
-        <button type="submit" class="display-orders-data">Find Orders</button>
+        <h5 class="user-room-service"></h5>
       </section>
       <footer class="orders-tab-footer">
         <img src="../images/orders-1.jpg" class="orders-footer" id="order-1">
