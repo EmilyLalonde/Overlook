@@ -22,3 +22,6 @@ Overlook is the final project for mod 2 and it is a hotel management app. I disp
 
 #### Main Page
 ![image](https://user-images.githubusercontent.com/47184994/62223216-cc31c180-b371-11e9-8911-ebb7f897bc94.png)
+
+#### Customer Page
+![image](https://user-images.githubusercontent.com/47184994/62223314-f2eff800-b371-11e9-8558-700d65c46f97.png)
