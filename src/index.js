@@ -102,22 +102,6 @@ $(document).ready(function() {
     $('.popular-booking-date').text(booking.findMostPopularBookingDate());
     $('.unpopular-booking-date').text(booking.findLeastPopularBookingDate());
 
-    // function findSelectedDateForRooms() {
-    //   let selectedDate = new Date($('#rooms-by-date').val());
-    //   let year = selectedDate.getFullYear();
-    //   let month = String(selectedDate.getMonth() + 1).padStart(2, '0');
-    //   let day = String(selectedDate.getDate() + 1).padStart(2, '0');
-    //   let daySelected = `${year}/${month}/${day}`
-    //   let findBookingDates = bookingData.reduce(function(acc, room) {
-    //     if (room.date === daySelected) {
-    //       acc.push(room.roomNumber)
-    //     }
-    //     return acc
-    //   }, [])
-    //   console.log(findBookingDates)
-    //   return findBookingDates
-    // }
-
     function findSelectedDateForOrders() {
       let selectedDate = new Date($('#orders-on-date').val());
       let year = selectedDate.getFullYear();
@@ -130,9 +114,16 @@ $(document).ready(function() {
       if (ordersData.length > 0) {
         return ordersData
       } else {
-        return 'Sorry there were no orders today'
+        return `Sorry there were no orders today`
       }
     }
+
+    $('.book-room-button').on('click', function() {
+      let orders = roomServiceData.map(function(order) {
+        return (`<li> Food:  ${order.food}  Price:  ${order.totalCost} </li>`)
+      })
+      $('.menu-display').html(orders.join(''))
+    })
     
     $('.find-date-orders').on('click', function() {
       let selectedOrders = findSelectedDateForOrders();
@@ -230,7 +221,7 @@ function findTotalRoomServiceEver(userName) {
     acc += order.totalCost
     return acc
   }, 0)
-  return orders
+  return `$ ${orders}`
 }
 
 $('#main').on('click', function() {
