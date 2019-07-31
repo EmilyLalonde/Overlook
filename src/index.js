@@ -120,7 +120,7 @@ $(document).ready(function() {
 
     $('.book-room-button').on('click', function() {
       let orders = roomServiceData.map(function(order) {
-        return (`<li> Food:  ${order.food}  Price:  ${order.totalCost} </li>`)
+        return (`<input type="radio" name="food" class="food" value=${order.userID}> Food:  ${order.food}  Price:  ${order.totalCost} <br>`)
       })
       $('.menu-display').html(orders.join(''))
     })
